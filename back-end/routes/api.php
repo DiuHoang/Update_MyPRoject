@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\VendorController;
+use App\Http\Controllers\AuthenController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -54,3 +55,19 @@ Route::get('showProVendor', [VendorController::class, 'index1']);
 Route::post('addProVendor', [VendorController::class, 'store1']);
 Route::post('updateProVendor', [VendorController::class, 'update1']);
 Route::delete('deleteProVendor', [VendorController::class, 'destroy1']);
+
+// Authen
+Route::get('getUser',[AuthenController::class,'getAccount']);
+Route::group([
+    'prefix' => 'auth'
+], function () {
+    Route::post('login', [AuthenController::class, 'login']);
+    Route::post('register', [AuthenController::class, 'register']);
+
+    Route::group([
+        'middleware' => 'auth:api'
+    ], function () {
+        Route::get('logout', [AuthenController::class, 'logout']);
+        Route::get('user', [AuthenController::class, 'user']);
+    });
+});

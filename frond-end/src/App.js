@@ -14,6 +14,11 @@ import Checkout from "./components/User/Checkout";
 import Payment from "./components/User/Payment";
 import UpdateVendor from "./components/Vendor/UpdateMenu";
 import AddProVendor from "./components/Vendor/AddProVendor";
+import Login from './components/Authen/Login';
+import Register from './components/Authen/Register';
+import Home from './components/Authen/Home';
+import Dashboard from './components/Authen/Dashboard';
+import PrivateRoute from './components/Authen/PrivateRoute';
 
 class App extends Component {
   render() {
@@ -63,6 +68,19 @@ class App extends Component {
           <Route path="/addProVendor">
             <AddProVendor />
           </Route>
+          {/*User might LogIn*/}
+          <Route path="/home">
+            <Home />
+          </Route>
+          {/*User will LogIn*/}
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="/register">
+            <Register />
+          </Route>
+          {/* User is LoggedIn*/}
+          <PrivateRoute path="/dashboard" component={Dashboard} />
         </Switch>
         {/* <div>
           <Footer />

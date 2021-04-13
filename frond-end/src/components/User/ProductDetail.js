@@ -39,13 +39,9 @@ class ProductDetail extends Component {
         "Content-Type": "application/json",
       },
       body: postInJson,
-    }).then((response) => {
+    }).then(response => {
       response.json();
-      Swal.fire(
-        "Good job!",
-        "Your pProduct Added Cart Suscessfully",
-        "success"
-      );
+      alert('San pham da duoc them vao gio hang!');
     });
   }
   render() {
